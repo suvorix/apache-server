@@ -5,7 +5,8 @@ read -e -p "ServerAlias: " salias
 
 echo "<VirtualHost *:80>"
 echo "	ServerName ${sname}"
-if [ "$(salias)" != "" ]; then
+if [[ ${salias} != "" ]]
+then
     echo "	ServerAlias ${salias}"
 fi
 echo "	DocumentRoot /data/${sname}/www"

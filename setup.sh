@@ -20,3 +20,10 @@ ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
 a2enconf phpmyadmin
 echo "update user set plugin='' where User='root'; flush privileges;" | mysql -u root -p mysql
 systemctl reload apache2
+
+apt-get update
+apt-get install -y software-properties-common
+add-apt-repository universe
+add-apt-repository ppa:certbot/certbot
+apt-get update
+apt-get install -y certbot python-certbot-apache 

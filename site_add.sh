@@ -1,28 +1,27 @@
 #!/bin/bash
-read -e -p "User name: " name
-read -e -p "Server: " dname
-
-echo "${name} - ${dname}"
+read -e -p "UserName: " name
+read -e -p "ServerName: " sname
+read -e -p "ServerAlias: " salias
 
 echo "<VirtualHost *:80>"
-echo "	ServerName ${dname}"
-
-#echo "	ServerAlias www.${dname}"
-
-echo "	DocumentRoot /data/${dname}/www"
-echo "	<Directory /data/${dname}/www>"
+echo "	ServerName ${sname}"
+if(${salias} != ""){
+    echo "	ServerAlias ${salias}"
+}
+echo "	DocumentRoot /data/${sname}/www"
+echo "	<Directory /data/${sname}/www>"
 echo "		Options FollowSymLinks"
 echo "		AllowOverride All"
 echo "		Require all granted"
 echo "	</Directory>"
-echo "	ErrorLog /data/${dname}/logs/error.log"
-echo "	CustomLog /data/${dname}/logs/access.log common"
+echo "	ErrorLog /data/${sname}/logs/error.log"
+echo "	CustomLog /data/${sname}/logs/access.log common"
 echo "</VirtualHost>"
 echo "php_admin_value date.timezone 'Europe/Moscow'"
 echo "php_admin_value max_execution_time 60"
 echo "php_admin_value upload_max_filesize 30M"
 
-#useradd -d /data/www/${dname} -s /bin/bash -m ${name}
+#useradd -d /data/www/${sname} -s /bin/bash -m ${name}
 #passwd ${name}
 
-#chown -R ${name}:${name} /data/www/${dname}
+#chown -R ${name}:${name} /data/www/${sname}

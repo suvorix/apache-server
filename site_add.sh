@@ -2,7 +2,6 @@
 read -e -p "UserName: " name
 read -e -p "ServerName: " sname
 read -e -p "ServerAlias: " salias
-
 mkdir /data/${sname}
 mkdir /data/${sname}/www
 mkdir /data/${sname}/logs
@@ -26,6 +25,7 @@ echo "php_admin_value max_execution_time 60" >> /etc/apache2/sites-available/${s
 echo "php_admin_value upload_max_filesize 30M" >> /etc/apache2/sites-available/${sname}.conf
 sudo a2ensite ${sname}
 sudo a2enmod rewrite
+service apache2 restart
 useradd -d /data/${sname} -s /bin/bash -m ${name}
 passwd ${name}
 chown -R ${name}:${name} /data/${sname}

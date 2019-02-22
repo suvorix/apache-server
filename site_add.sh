@@ -2,7 +2,7 @@
 read -e -p "UserName: " name
 read -e -p "ServerName: " sname
 read -e -p "ServerAlias: " salias
-mkdir /data
+
 mkdir /data/${sname}
 mkdir /data/${sname}/www
 mkdir /data/${sname}/logs

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 chmod +x ./add/*.sh
-./add/db.sh
+./add/site.sh
 
 read -e -p "Создать FTP пользователя? [y/n]: " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
